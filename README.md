@@ -31,27 +31,27 @@ A [Webpack 4](https://webpack.js.org/) boilerplate with build-in:
 ## Get Started
 
 
-- [Project Structure](#project-structure)
-- [Commands](#commands)
-    - [Development](#development)
-    - [Production](#production)
-    - [Deploy to Github Pages](#deploy-to-github-pages)
-- [Setup](#setup)
+- [Webpack Boilerplate](#webpack-boilerplate)
+  - [Get Started](#get-started)
+  - [Project Structure](#project-structure)
+    - [Commands](#commands)
+      - [Development](#development)
+      - [Production](#production)
+      - [Deploy to Github Pages](#deploy-to-github-pages)
+  - [Setup](#setup)
     - [Quick setup](#quick-setup)
     - [Complete setup](#complete-setup)
-        - [Create your package.json and customize it](#create-your-packagejson-and-customize-it)
-        - [Install Webpack](#install-webpack)
-        - [Create files](#create-files)
-        - [Add HTML to your generated Bundle](#add-html-to-your-generated-bundle)
-        - [Transplate your JS with Babel](#transplate-your-js-with-babel)
-        - [Styling: import and inject CSS](#styling-import-and-inject-css)
-        - [Import images](#import-images)
-        - [Optimize CSS and Javascript assets](#optimize-css-and-javascript-assets)
-        - [Use Bootstrap](#use-bootstrap)
-        - [Use FontAwesome](#use-fontawesome)
-        - [Deploy to Github Pages](#deploy-to-github-pages)
-        - [Use aliases](use-aliases)
-        - [Use BrowserSync](use-brosersync)
+      - [Create your package.json and customize it](#create-your-packagejson-and-customize-it)
+      - [Install Webpack](#install-webpack)
+      - [Create files](#create-files)
+      - [Add HTML to your generated Bundle](#add-html-to-your-generated-bundle)
+      - [Transplate your JS with Babel](#transplate-your-js-with-babel)
+      - [Styling: import and inject CSS](#styling-import-and-inject-css)
+      - [Import images](#import-images)
+      - [Optimize CSS and Javascript assets](#optimize-css-and-javascript-assets)
+      - [Use Bootstrap](#use-bootstrap)
+      - [Use Fontawesome](#use-fontawesome)
+    - [Credits](#credits)
 
 
 
@@ -221,7 +221,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 //in the configuration -> plugins
 plugins: [
   new HtmlWebpackPlugin({
-    title: "Setting up webpack 4",
+    title: "Global Terrorism",
     template: "index.html",
     inject: true,
     minify: {

@@ -83,14 +83,20 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "assets/css/styles.css"
     }),
+    // Configure default page
     new HtmlWebpackPlugin({
-      title: "Setting up webpack 4",
+      title: "Global Terrorism",
       template: "src/index.html",
       inject: true,
       minify: {
         removeComments: true,
         collapseWhitespace: true
       }
+    }),
+    // Add new pages below
+    new HtmlWebpackPlugin({
+      filename: "scatter.html",
+      template: "src/scatter.html",
     }),
     new BrowserSyncPlugin({
       host: 'localhost',
