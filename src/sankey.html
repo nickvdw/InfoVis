@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Global Terrorism</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="./index.html">Map</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Scatter<span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page content -->
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-4 col-md-3">
+        <div class="row" id="viewof1"></div>
+        <div class="row" id="viewof2"></div>
+        <div class="row" id="viewof3"></div>
+        <div class="row" id="viewofthreshold"></div>
+        <div class="row" id="viewofselectedcountry"></div>
+        <div class="row" id="viewofyears"></div>
+      </div>
+      <div class="col-16 col-md-15" id="primitiveChart"></div>
+    </div>
+  </div>
+  
+</html>
+
+<script type="module">
+  // Import the notebook
+  import notebook from "https://api.observablehq.com/@sourqe/global-terrorism-sankey.js";
+
+  // Put all cells you want to render here
+  const renders = {
+    "viewof selected1": "#viewof1",
+    "viewof selected2": "#viewof2",
+    "viewof selected3": "#viewof3",
+    "viewof threshold": "#viewofthreshold",
+    "viewof selectedCountry": "#viewofselectedcountry",
+    "viewof years": "#viewofyears",
+    "primitiveChart": "#primitiveChart",
+    "advancedChart": "#advancedChart",
+  };
+
+  // Render the cells
+  import {Inspector, Runtime} from "https://unpkg.com/@observablehq/notebook-runtime@2?module";
+  for (let i in renders)
+    renders[i] = document.querySelector(renders[i]);
+
+  Runtime.load(notebook, (variable) => {
+    console.log(variable);
+    if (renders[variable.name])
+      return new Inspector(renders[variable.name]);
+  });
+</script>
+
+<style>
+svg {
+  width: 800px !important;
+  height: 100% !important;
+}
+
+section.range-slider {
+    position: relative;
+    width: 200px;
+    height: 35px;
+    display: inline-block;
+}
+
+section.range-slider input {
+    pointer-events: none;
+    position: absolute;
+    overflow: hidden;
+    left: 0;
+    top: 15px;
+    width: 200px;
+    outline: none;
+    height: 18px;
+    margin: 0;
+    padding: 0;
+}
+
+section.range-slider output {
+    pointer-events: none;
+    position: absolute;
+    overflow: hidden;
+    left: 0;
+    top: 15px;
+    left: 215px;
+    outline: none;
+    height: 18px;
+    margin: 0;
+    padding: 0;
+}
+
+section.range-slider input::-webkit-slider-thumb {
+    pointer-events: all;
+    position: relative;
+    z-index: 1;
+    outline: 0;
+}
+
+section.range-slider input::-moz-range-thumb {
+    pointer-events: all;
+    position: relative;
+    z-index: 10;
+    -moz-appearance: none;
+    width: 9px;
+}
+
+section.range-slider input::-moz-range-track {
+    position: relative;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 1);
+    border: 0;
+}
+
+section.range-slider input:last-of-type::-moz-range-track {
+    -moz-appearance: none;
+    background: none transparent;
+    border: 0;
+}
+
+section.range-slider input[type=range]::-moz-focus-outer {
+  border: 0;
+}
+</style>

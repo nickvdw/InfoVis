@@ -12,7 +12,7 @@
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Terrorism</a>
+    <a class="navbar-brand" href="#">Global Terrorism</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -21,6 +21,9 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a class="nav-link" href="#">Map<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/sankey.html">Sankey</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/scatter.html">Scatter</a>
@@ -37,9 +40,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="fullwidth">
-        <div id="display"></div>
-      </div>
+      <div id="display"></div>
     </div>
   </div>
 
@@ -53,6 +54,7 @@
   const renders = {
     "viewof selectedYear": "#viewof-p",
     "terrorism_map": "#display",
+    "html": "html"
   };
 
   // Render the cells
@@ -61,8 +63,154 @@
     renders[i] = document.querySelector(renders[i]);
 
   Runtime.load(notebook, (variable) => {
+    console.log(variable);
     if (renders[variable.name])
       return new Inspector(renders[variable.name]);
   });
 </script>
 </html>
+
+<style>
+.info { padding: 6px 8px; font: 11px Arial, Helvetica, sans-serif; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
+.info h4 { margin: 0 0 5px; color: #777; }
+.legend { text-align: left; line-height: 25px; color: #555; }
+.legend i { width: 30px; height: 20px; float: left; margin-right: 2px; opacity: 0.7; }
+
+.container {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.leaflet-container {
+  height: 83vh !important;
+  width: 100vw !important;
+}
+
+#viewof-p {
+  margin-top: 10px;
+}
+
+#legend {
+  position: absolute;
+  top: 2170px;
+  left: 790px;
+  margin: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  z-index: 100;
+  font-size: 1em;
+  font-family: sans-serif;
+  width: 165px;
+  background: rgba(255,255,255,0.6);
+}
+.legendheading {
+  position: relative;
+  height: 25px;
+  padding: 5px 2px 0px 2px;
+  font-size: larger;
+  font-weight: bold;
+}
+.legenditem {
+  padding: 2px;
+  margin-bottom: 2px;
+}
+
+/*Marker clusters*/
+.marker-cluster-pie g.arc{
+  fill-opacity: 0.5;
+}
+.marker-cluster-pie-label {
+  font-size: 12px;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+/*Markers*/
+.marker {
+  width: 18px;
+  height: 18px;
+  border-width: 2px;
+  border-radius:10px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-style: solid;
+  fill: #CCC;
+  stroke: #444;
+  background: #CCC;
+  border-color: #444;
+}
+.marker div{
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+/*marker categories*/
+.category-1{
+  fill: #F88;
+  stroke: #800;
+  background: #F88;
+  border-color: #800;
+}
+.category-2{
+  fill: #FA0;
+  stroke: #B60;
+  background: #FA0;
+  border-color: #B60;
+}
+.category-3{
+  fill: #FF3;
+  stroke: #D80;
+  background: #FF3;
+  border-color: #D80;
+}
+.category-4{
+  fill: #BFB;
+  stroke: #070;
+  background: #BFB;
+  border-color: #070;
+}
+.category-5{
+  fill: #9DF;
+  stroke: #007;
+  background: #9DF;
+  border-color: #007;
+}
+.category-6{
+  fill: #B8E;
+  stroke: #444;
+  background: #B8E;
+  border-color: #444;
+}
+.category-7{
+  fill: #37A;
+  stroke: #444;
+  background: #37A;
+  border-color: #444;
+}
+.category-8{
+  fill: #CCC;
+  stroke: #444;
+  background: #CCC;
+  border-color: #444;
+}
+.category-9{
+  fill: #FFF;
+  stroke: #444;
+  background: #FFF;
+  border-color: #444;
+}
+
+/*Popup*/
+.map-popup span.heading {
+  display: block;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.map-popup span.attribute {
+  display: block;
+}
+.map-popup span.label {
+  font-weight: bold;
+}</style>

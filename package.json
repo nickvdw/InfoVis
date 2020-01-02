@@ -38,6 +38,9 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.7.2",
+    "@observablehq/runtime": "^4.6.4",
+    "@sourqe/global-terrorism": "https://api.observablehq.com/@sourqe/global-terrorism.tgz?v=3",
+    "@sourqe/global-terrorism-sankey": "https://api.observablehq.com/@sourqe/global-terrorism-sankey.tgz?v=3",
     "bootstrap": "^4.3.1"
   }
 }

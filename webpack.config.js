@@ -95,6 +95,10 @@ module.exports = {
     }),
     // Add new pages below
     new HtmlWebpackPlugin({
+      filename: "sankey.html",
+      template: "src/sankey.html",
+    }),
+    new HtmlWebpackPlugin({
       filename: "scatter.html",
       template: "src/scatter.html",
     }),
