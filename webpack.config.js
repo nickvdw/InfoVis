@@ -97,14 +97,29 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: "sankey.html",
       template: "src/sankey.html",
+      inject: true,
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true
+      }
     }),
     new HtmlWebpackPlugin({
       filename: "line.html",
       template: "src/line.html",
+      inject: true,
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true
+      }
     }),
     new HtmlWebpackPlugin({
       filename: "multiple.html",
       template: "src/multiple.html",
+      inject: true,
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true
+      }
     }),
     new BrowserSyncPlugin({
       host: 'localhost',
