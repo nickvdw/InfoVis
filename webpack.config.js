@@ -95,6 +95,7 @@ module.exports = {
     }),
     // Add new pages below
     new HtmlWebpackPlugin({
+      title: "Global Terrorism",
       filename: "sankey.html",
       template: "src/sankey.html",
       inject: true,
@@ -104,6 +105,7 @@ module.exports = {
       }
     }),
     new HtmlWebpackPlugin({
+      title: "Global Terrorism",
       filename: "line.html",
       template: "src/line.html",
       inject: true,
@@ -113,6 +115,7 @@ module.exports = {
       }
     }),
     new HtmlWebpackPlugin({
+      title: "Global Terrorism",
       filename: "multiple.html",
       template: "src/multiple.html",
       inject: true,
