@@ -12,7 +12,7 @@
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Global Terrorism</a>
+    <a class="navbar-brand" href="#">TerVis</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -23,10 +23,13 @@
           <a class="nav-link" href="#">Map<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/sankey.html">Sankey</a>
+          <a class="nav-link" href="/line.html">Numerical over time</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/scatter.html">Scatter</a>
+          <a class="nav-link" href="/sankey.html">Sankey Diagram</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/multiple.html">Brushing & Linking</a>
         </li>
       </ul>
     </div>
@@ -35,56 +38,49 @@
   <!-- Page content -->
   <div class="container">
     <div class="row">
-      <div class="col-2">
-        <p id="viewof-p"></p>
+      <div class="col-12">
+        <p id="values"></p>
       </div>
     </div>
     <div class="row">
-      <div id="display"></div>
+      <p id="display"></p>
     </div>
   </div>
 
 </body>
 
 <script type="module">
-  // Import the notebook
-  import notebook from "https://api.observablehq.com/@sourqe/global-terrorism.js";
+  import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+  import notebook from "https://api.observablehq.com/d/3f4618f4c7a20845.js?v=3";
 
-  // Put all cells you want to render here
-  const renders = {
-    "viewof selectedYear": "#viewof-p",
-    "terrorism_map": "#display",
-    "html": "html"
-  };
-
-  // Render the cells
-  import {Inspector, Runtime} from "https://unpkg.com/@observablehq/notebook-runtime@2?module";
-  for (let i in renders)
-    renders[i] = document.querySelector(renders[i]);
-
-  Runtime.load(notebook, (variable) => {
-    console.log(variable);
-    if (renders[variable.name])
-      return new Inspector(renders[variable.name]);
+  new Runtime().module(notebook, name => {
+    switch (name) {
+      case "terrorism_map": return new Inspector(document.querySelector("#display"));
+      case "viewof values": return new Inspector(document.querySelector("#values"));
+      default: return new Inspector.into(document.body);
+    }
   });
 </script>
 </html>
 
 <style>
-.info { padding: 6px 8px; font: 11px Arial, Helvetica, sans-serif; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
+.container {
+  margin-left: 0px;
+}
+
+.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom {
+  height: 80vh !important;
+  max-width: 100vw !important;
+}
+
+#values {
+  margin-top: 10px;
+}
+
+.info { padding: 6px 8px; font: 11px sans-serif; background: white; background: rgba(255,255,255,0.9); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
 .info h4 { margin: 0 0 5px; color: #777; }
 .legend { text-align: left; line-height: 25px; color: #555; }
 .legend i { width: 30px; height: 20px; float: left; margin-right: 2px; opacity: 0.7; }
-
-.container {
-  margin-left: 0px;
-  margin-right: 0px;
-}
-
-.leaflet-container {
-  height: 83vh !important;
-  width: 100vw !important;
-}
 
 #viewof-p {
   margin-top: 10px;
@@ -106,6 +102,7 @@
 .legendheading {
   position: relative;
   height: 25px;
+  
   padding: 5px 2px 0px 2px;
   font-size: larger;
   font-weight: bold;
@@ -117,18 +114,18 @@
 
 /*Marker clusters*/
 .marker-cluster-pie g.arc{
-  fill-opacity: 0.5;
+  fill-opacity: 0.9;
 }
 .marker-cluster-pie-label {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
   font-family: sans-serif;
 }
 
 /*Markers*/
 .marker {
-  width: 18px;
-  height: 18px;
+  width: 12px;
+  height: 12px;
   border-width: 2px;
   border-radius:10px;
   margin-top: -10px;
@@ -148,58 +145,59 @@
 
 /*marker categories*/
 .category-1{
-  fill: #F88;
-  stroke: #800;
-  background: #F88;
-  border-color: #800;
+  fill: #e41a1c;
+  stroke: #880f10;
+  background: #e41a1c;
+  border-color: #880f10;
 }
 .category-2{
-  fill: #FA0;
-  stroke: #B60;
-  background: #FA0;
-  border-color: #B60;
+  fill: #f781bf;
+  stroke: #944d72;
+  background: #f781bf;
+  border-color: #944d72;
 }
 .category-3{
-  fill: #FF3;
-  stroke: #D80;
-  background: #FF3;
-  border-color: #D80;
+  fill: #377eb8;
+  stroke: #214b6e;
+  background: #377eb8;
+  border-color: #214b6e;
 }
 .category-4{
-  fill: #BFB;
-  stroke: #070;
-  background: #BFB;
-  border-color: #070;
+  fill: #984ea3;
+  stroke: #5b2e61;
+  background: #984ea3;
+  border-color: #5b2e61;
 }
 .category-5{
-  fill: #9DF;
-  stroke: #007;
-  background: #9DF;
-  border-color: #007;
+  fill: #ff7f00;
+  stroke: #994c00;
+  background: #ff7f00;
+  border-color: #994c00;
 }
 .category-6{
-  fill: #B8E;
-  stroke: #444;
-  background: #B8E;
-  border-color: #444;
+  fill: #ffff33;
+  stroke: #99991e;
+  background: #ffff33;
+  border-color: #99991e;
 }
 .category-7{
-  fill: #37A;
-  stroke: #444;
-  background: #37A;
-  border-color: #444;
+  fill: #a65628;
+  stroke: #633318;
+  background: #a65628;
+  border-color: #633318;
 }
 .category-8{
-  fill: #CCC;
-  stroke: #444;
-  background: #CCC;
-  border-color: #444;
+
+fill: #4daf4a;
+  stroke: #2e692c;
+  background: #4daf4a;
+  border-color: #2e692c;
 }
 .category-9{
-  fill: #FFF;
-  stroke: #444;
-  background: #FFF;
-  border-color: #444;
+  fill: #999999;
+  stroke: #5b5b5b;
+  background: #999999;
+  border-color: #5b5b5b;
 }
 
 /*Popup*/
@@ -213,4 +211,71 @@
 }
 .map-popup span.label {
   font-weight: bold;
-}</style>
+}
+
+section.range-slider {
+    position: relative;
+    width: 200px;
+    height: 35px;
+    display: inline-block;
+}
+
+section.range-slider input {
+    pointer-events: none;
+    position: absolute;
+    overflow: hidden;
+    left: 0;
+    top: 15px;
+    width: 200px;
+    outline: none;
+    height: 18px;
+    margin: 0;
+    padding: 0;
+}
+
+section.range-slider output {
+    pointer-events: none;
+    position: absolute;
+    overflow: hidden;
+    left: 0;
+    top: 15px;
+    left: 215px;
+    outline: none;
+    height: 18px;
+    margin: 0;
+    padding: 0;
+}
+
+section.range-slider input::-webkit-slider-thumb {
+    pointer-events: all;
+    position: relative;
+    z-index: 1;
+    outline: 0;
+}
+
+section.range-slider input::-moz-range-thumb {
+    pointer-events: all;
+    position: relative;
+    z-index: 10;
+    -moz-appearance: none;
+    width: 9px;
+}
+
+section.range-slider input::-moz-range-track {
+    position: relative;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 1);
+    border: 0;
+}
+
+section.range-slider input:last-of-type::-moz-range-track {
+    -moz-appearance: none;
+    background: none transparent;
+    border: 0;
+}
+
+section.range-slider input[type=range]::-moz-focus-outer {
+  border: 0;
+}
+
+</style>

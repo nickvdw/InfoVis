@@ -22,13 +22,13 @@
         <li class="nav-item">
           <a class="nav-link" href="/index.html">Map</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="/line.html">Numerical over time</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/sankey.html">Sankey Diagram</a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="/multiple.html">Brushing & Linking</a>
         </li>
       </ul>
@@ -38,8 +38,11 @@
   <!-- Page content -->
   <div class="container">
     <div class="row justify-content-md-center">
-      <div class="col-11">
+      <div class="col-8">
         <p id="values"></p>
+      </div>
+      <div class="col-8">
+        <p id="values2"></p>
       </div>
     </div>
     <div class="row justify-content-md-center">
@@ -48,104 +51,33 @@
       </div>
     </div>
   </div>
+
 </body>
 
 <script type="module">
   import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
-  import notebook from "https://api.observablehq.com/d/7bd503565d6016b2.js?v=3";
+  import notebook from "https://api.observablehq.com/d/901c8dd5185faca6.js?v=3";
 
   new Runtime().module(notebook, name => {
-    console.log(name);
     switch (name) {
-      case "advancedChart": return new Inspector(document.querySelector("#display"));
+      case "viewof viewAdvanced": return new Inspector(document.querySelector("#display"));
       case "viewof values": return new Inspector(document.querySelector("#values"));
+      case "viewof values2": return new Inspector(document.querySelector("#values2"));
       default: return new Inspector.into(document.body);
     }
   });
-
 </script>
 </html>
 
 <style>
-
-#display {
-  width: 90vw;
-}
-
 .container {
-  margin-left: 0px !important;
-  margin-right: 0px !important;
+  margin-left: 0px;
 }
 
 body {overflow: hidden; }
 
 #values {
   margin-top: 10px;
-}
-
-section.range-slider {
-    position: relative;
-    width: 200px;
-    height: 35px;
-    display: inline-block;
-}
-
-section.range-slider input {
-    pointer-events: none;
-    position: absolute;
-    overflow: hidden;
-    left: 0;
-    top: 15px;
-    width: 200px;
-    outline: none;
-    height: 18px;
-    margin: 0;
-    padding: 0;
-}
-
-section.range-slider output {
-    pointer-events: none;
-    position: absolute;
-    overflow: hidden;
-    left: 0;
-    top: 15px;
-    left: 215px;
-    outline: none;
-    height: 18px;
-    margin: 0;
-    padding: 0;
-}
-
-section.range-slider input::-webkit-slider-thumb {
-    pointer-events: all;
-    position: relative;
-    z-index: 1;
-    outline: 0;
-}
-
-section.range-slider input::-moz-range-thumb {
-    pointer-events: all;
-    position: relative;
-    z-index: 10;
-    -moz-appearance: none;
-    width: 9px;
-}
-
-section.range-slider input::-moz-range-track {
-    position: relative;
-    z-index: -1;
-    background-color: rgba(0, 0, 0, 1);
-    border: 0;
-}
-
-section.range-slider input:last-of-type::-moz-range-track {
-    -moz-appearance: none;
-    background: none transparent;
-    border: 0;
-}
-
-section.range-slider input[type=range]::-moz-focus-outer {
-  border: 0;
 }
 
 </style>

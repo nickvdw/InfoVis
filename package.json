@@ -37,10 +37,12 @@
     "webpack-cli": "^3.2.3"
   },
   "dependencies": {
+    "3f4618f4c7a20845": "https://api.observablehq.com/d/3f4618f4c7a20845.tgz?v=3",
+    "7bd503565d6016b2": "https://api.observablehq.com/d/7bd503565d6016b2.tgz?v=3",
+    "901c8dd5185faca6": "https://api.observablehq.com/d/901c8dd5185faca6.tgz?v=3",
     "@fortawesome/fontawesome-free": "^5.7.2",
     "@observablehq/runtime": "^4.6.4",
-    "@sourqe/global-terrorism": "https://api.observablehq.com/@sourqe/global-terrorism.tgz?v=3",
-    "@sourqe/global-terrorism-sankey": "https://api.observablehq.com/@sourqe/global-terrorism-sankey.tgz?v=3",
-    "bootstrap": "^4.3.1"
+    "bootstrap": "^4.3.1",
+    "f32387be8af72ba8": "https://api.observablehq.com/d/f32387be8af72ba8.tgz?v=3"
   }
 }

@@ -99,8 +99,12 @@ module.exports = {
       template: "src/sankey.html",
     }),
     new HtmlWebpackPlugin({
-      filename: "scatter.html",
-      template: "src/scatter.html",
+      filename: "line.html",
+      template: "src/line.html",
+    }),
+    new HtmlWebpackPlugin({
+      filename: "multiple.html",
+      template: "src/multiple.html",
     }),
     new BrowserSyncPlugin({
       host: 'localhost',
