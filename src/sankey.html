@@ -37,20 +37,9 @@
 
   <!-- Page content -->
   <div class="container">
-    <div class="row justify-content-md-center">
-      <div class="col-2"></div>
-      <div class="col-10">
-        <p id="values"></p>
-      </div>
-    </div>
-    <div class="row justify-content-md-center">
-      <div class="col-2"></div>
-      <div class="col-10">
-        <div id="display"></div>
-      </div>
-    </div>
+    <p class="mx-auto" style="width: 900px;" id="values"></p>
+    <div class="mx-auto" style="width: 1154px;" id="display"></div>
   </div>
-</body>
 
 <script type="module">
   import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
@@ -70,19 +59,18 @@
 
 <style>
 
-#display {
-  width: 70vw;
-}
-
 .container {
-  margin-left: 0px !important;
-  margin-right: 0px !important;
+  width: 100vw;
+  min-width: 100vw;
+  margin-left: -50px;
+  margin-right: 0px;
 }
 
 body {overflow: hidden; }
 
 #values {
   margin-top: 10px;
+  font: 100 0.8rem sans-serif;
 }
 
 section.range-slider {

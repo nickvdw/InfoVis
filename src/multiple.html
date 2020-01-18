@@ -37,18 +37,9 @@
 
   <!-- Page content -->
   <div class="container">
-    <div class="row justify-content-md-center">
-      <div class="col-11">
-        <p id="values"></p>
-      </div>
-    </div>
-    <div class="row justify-content-md-center">
-      <div class="col-11">
-        <div id="display"></div>
-      </div>
-    </div>
+    <p class="mx-auto" style="width: 1154px;" id="values"></p>
+    <div class="mx-auto" style="width: 1154px;" id="display"></div>
   </div>
-</body>
 
 <script type="module">
   import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
@@ -72,13 +63,19 @@
   width: 90vw;
 }
 
-#values {
-  margin-top: 10px;
+.vega-embed-wrapper {
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
-.container {
-  margin-left: 0px !important;
-  margin-right: 0px !important;
+body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+#values {
+  margin-top: 10px;
+  font: 100 0.8rem sans-serif;
 }
 
 </style>

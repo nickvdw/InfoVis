@@ -37,19 +37,9 @@
 
   <!-- Page content -->
   <div class="container">
-    <div class="row justify-content-md-center">
-      <div class="col-8">
-        <p id="values"></p>
-      </div>
-      <div class="col-8">
-        <p id="values2"></p>
-      </div>
-    </div>
-    <div class="row justify-content-md-center">
-      <div class="col-11">
-        <div id="display"></div>
-      </div>
-    </div>
+    <p class="mx-auto" style="width: 650px;" id="values"></p>
+    <p class="mx-auto" style="width: 650px" id="values2"></p>
+    <div class="mx-auto" style="width: 895px;" id="display"></div>
   </div>
 
 </body>
@@ -71,8 +61,15 @@
 
 <style>
 
+.vega-embed-wrapper {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
 .container {
-  margin-left: 0px;
+  width: 100vw;
+  min-width: 100vw;
+  margin-left: -100px;
   margin-right: 0px;
 }
 
@@ -80,6 +77,11 @@ body {overflow: hidden; }
 
 #values {
   margin-top: 10px;
+  font: 100 0.8rem sans-serif;
+}
+
+#values2 {
+  font: 100 0.8rem sans-serif;
 }
 
 </style>
