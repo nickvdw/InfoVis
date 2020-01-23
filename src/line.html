@@ -28,18 +28,18 @@
         <li class="nav-item">
           <a class="nav-link" href="../sankey.html">Sankey Diagram</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../multiple.html">Brushing & Linking</a>
-        </li>
       </ul>
     </div>
   </nav>
 
   <!-- Page content -->
   <div class="container">
-    <p class="mx-auto" style="width: 650px;" id="values"></p>
-    <p class="mx-auto" style="width: 650px" id="values2"></p>
-    <div class="mx-auto" style="width: 895px;" id="display"></div>
+    <p class="mx-auto" style="width: 650px; margin-bottom: 5px;" id="values"></p>
+    <div class="mx-auto wrap" style="width:950px;">
+      <p class="" style="width: 650px; margin-bottom: 5px;" id="values2"></p>
+      <p class="" style="width: 300px; margin-bottom: 5px;" id="check"></p>
+    </div>
+    <div class="mx-auto" style="width: 1200px;" id="display"></div>
   </div>
 
 </body>
@@ -53,6 +53,7 @@
       case "viewof viewAdvanced": return new Inspector(document.querySelector("#display"));
       case "viewof values": return new Inspector(document.querySelector("#values"));
       case "viewof values2": return new Inspector(document.querySelector("#values2"));
+      case "viewof check": return new Inspector(document.querySelector("#check"));
       default: return new Inspector.into(document.body);
     }
   });
@@ -60,6 +61,15 @@
 </html>
 
 <style>
+.wrap { 
+  display:flex;
+  align-items:center
+}
+
+p {
+  overflow: hidden;
+  text-align: center;
+}
 
 .vega-embed-wrapper {
   overflow-x: hidden;
@@ -76,7 +86,7 @@
 body {overflow: hidden; }
 
 #values {
-  margin-top: 10px;
+  margin-top: 5px;
   font: 100 0.8rem sans-serif;
 }
 
